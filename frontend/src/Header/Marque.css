@@ -1,0 +1,16 @@
+.component{
+    display: flex;
+    margin-top: 75px;
+    margin-bottom:5px;
+    background-color: #e7e7e7;
+    line-height: 1.8;
+}
+@media (max-width: 800px) {
+    .component{
+        display: flex;
+        margin-top: 5px;
+        margin-bottom:5px;
+        background-color: #e7e7e7;
+        line-height: 1.8;
+    }
+}

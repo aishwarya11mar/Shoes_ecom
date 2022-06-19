@@ -1,0 +1,148 @@
+import React, { Fragment, useRef, useState, useEffect ,useContext} from "react";
+import {
+  BoldLink,
+  BoxContainer,
+  FormContainer,
+  Input,
+  MutedLink,
+  SubmitButton,
+} from "./common";
+import { Marginer } from "../marginer";
+import { AccountContext } from "./accountContext";
+import { clearErrors, login, register } from "../../../actions/userAction";
+import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useAlert } from "react-alert";
+import Loader from "../../../layout/Loader/Loader";
+
+
+export function SignupForm(props,{history, location, match}) {
+  const { switchToSignin } = useContext(AccountContext);
+
+  const dispatch = useDispatch();
+  const alert = useAlert();
+
+  const { error, loading, isAuthenticated } = useSelector(
+    (state) => state.user
+  );
+
+  const loginTab = useRef(null);
+  const registerTab = useRef(null);
+  const switcherTab = useRef(null);
+
+  const [loginEmail, setLoginEmail] = useState("");
+  const [loginPassword, setLoginPassword] = useState("");
+
+  const [user, setUser] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
+
+  const { name, email, password } = user;
+
+  const [avatar, setAvatar] = useState("/Profile.png");
+  const [avatarPreview, setAvatarPreview] = useState("/Profile.png");
+
+  const loginSubmit = (e) => {
+    e.preventDefault();
+    dispatch(login(loginEmail, loginPassword));
+  };
+
+  const registerSubmit = (e) => {
+    e.preventDefault();
+
+    const myForm = new FormData();
+
+    myForm.set("name", name);
+    myForm.set("email", email);
+    myForm.set("password", password);
+    myForm.set("avatar", avatar);
+    dispatch(register(myForm));
+  };
+
+  const registerDataChange = (e) => {
+    if (e.target.name === "avatar") {
+      const reader = new FileReader();
+
+      reader.onload = () => {
+        if (reader.readyState === 2) {
+          setAvatarPreview(reader.result);
+          setAvatar(reader.result);
+        }
+      };
+
+      reader.readAsDataURL(e.target.files[0]);
+    } else {
+      setUser({ ...user, [e.target.name]: e.target.value });
+    }
+  };
+
+  //const redirect = location.search ? parseInt(location.search.split("=")[1]) : "/account";
+
+
+  
+
+
+
+  useEffect(() => {
+    if (error) {
+      alert.error(error);
+      dispatch(clearErrors());
+    }
+
+    if (isAuthenticated) {
+      history.push("/account");
+    }
+  }, [dispatch, error, alert, history, isAuthenticated]);
+
+  return (
+    <Fragment>
+    {loading ? (
+      <Loader />
+    ) : (
+      <Fragment>
+    <BoxContainer>
+      <FormContainer>
+        <Input type="text" placeholder="Full Name"  required
+        name="name"
+        value={name}
+        onChange={registerDataChange}/>
+
+        <Input type="email" placeholder="Email" required
+                    name="email"
+                    value={email}
+                    onChange={registerDataChange}/>
+
+
+        <Input type="password" placeholder="Password" required
+                    name="password"
+                    value={password}
+                    onChange={registerDataChange}/>
+
+                    <div id="registerImage">
+                 
+                    <input
+                      type="file"
+                      name="avatar"
+                      accept="image/*"
+                      onChange={registerDataChange}
+                    />
+                  </div>
+      
+      </FormContainer>
+      <Marginer direction="vertical" margin={10} />
+      <SubmitButton type="submit"  onClick={registerSubmit}>Signup</SubmitButton>
+      <Marginer direction="vertical" margin="1em" />
+      <MutedLink href="#">
+        Already have an account?
+        <BoldLink href="#" onClick={switchToSignin}>
+          Signin
+        </BoldLink>
+      </MutedLink>
+    </BoxContainer>
+    </Fragment>
+    )}
+  </Fragment>
+  );
+}
