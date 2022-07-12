@@ -7,11 +7,11 @@ import Deal from '../Header/Deal.jsx';
 import {
   clearErrors,
   getProductDetails,
-  //newReview,
+  newReview,
 } from "../actions/productAction";
 import Loader from "../layout/Loader/Loader";
 import { Rating } from "@material-ui/lab";
-//import { ReviewCard } from "./ReviewCard.js";
+import { ReviewCard } from "./ReviewCard.js";
 import {
   //Dialog,
   // DialogActions,
@@ -19,10 +19,12 @@ import {
   //DialogTitle,
   //Button,
 } from "@material-ui/core";
+import { Link } from "react-router-dom";
+import { NEW_REVIEW_RESET } from "../constants/productConstants";
 
 import { useAlert } from "react-alert";
 import MetaData from "../layout/MetaData";
-//import { addItemsToCart } from "../actions/cartAction";
+import { addItemsToCart } from "../actions/cartAction";
 import { mobile } from "../Header/responsive";
 import { useLocation } from "react-router-dom";
 import styled from "styled-components";
@@ -63,9 +65,9 @@ const ProductDetails = ({ match }) => {
     (state) => state.productDetails
   );
 
-  /*  const { success, error: reviewError } = useSelector(
+    const { success, error: reviewError } = useSelector(
      (state) => state.newReview
-   ); */
+   ); 
 
   const options = {
     size: "large",
@@ -74,7 +76,7 @@ const ProductDetails = ({ match }) => {
     precision: 0.5,
   };
 
-  /*   const [quantity, setQuantity] = useState(1);
+     const [quantity, setQuantity] = useState(1);
     const [open, setOpen] = useState(false);
     const [rating, setRating] = useState(0);
     const [comment, setComment] = useState("");
@@ -91,14 +93,14 @@ const ProductDetails = ({ match }) => {
   
       const qty = quantity - 1;
       setQuantity(qty);
-    }; */
+    }; 
 
-  /* const addToCartHandler = () => {
+   const addToCartHandler = () => {
     dispatch(addItemsToCart(match.params.id, quantity));
     alert.success("Item Added To Cart");
-  }; */
+  }; 
 
-  /* const submitReviewToggle = () => {
+   const submitReviewToggle = () => {
     open ? setOpen(false) : setOpen(true);
   };
 
@@ -112,7 +114,7 @@ const ProductDetails = ({ match }) => {
     dispatch(newReview(myForm));
 
     setOpen(false);
-  }; */
+  }; 
 
   useEffect(() => {
     window.scrollTo(0, 0) //scroll to top
@@ -125,17 +127,17 @@ const ProductDetails = ({ match }) => {
     }
 
 
-    /* if (reviewError) {
+     if (reviewError) {
       alert.error(reviewError);
       dispatch(clearErrors());
-    } */
+    } 
 
-    /* if (success) {
+     if (success) {
       alert.success("Review Submitted Successfully");
       dispatch({ type: NEW_REVIEW_RESET });
-    } */
+    } 
     dispatch(getProductDetails(match.params.id));
-  }, [dispatch, match.params.id, error, alert/* , reviewError */]);
+  }, [dispatch, match.params.id, error, alert, reviewError ]);
 
   return (
     <Fragment>
@@ -145,7 +147,9 @@ const ProductDetails = ({ match }) => {
         <Fragment>
           <MetaData title={`${product.name} -- ECOMMERCE`} />
           <div className="ProductDetails">
+      
             <div>
+      
               <Carousel >
                 {product.images &&
                   product.images.map((item, i) => (
@@ -158,6 +162,22 @@ const ProductDetails = ({ match }) => {
                     />
                   ))}
               </Carousel>
+              <div >
+              <ul style={{display:"flex",listStyle:"none",padding:"10px",cursor:"pointer"}}>
+              <li style={{margin:"4px"}}><img src="https://i.postimg.cc/sg4kVCyD/blue.jpg" alt="a1" style={{height:"60px",width:"auto"}}/></li>
+              <li style={{margin:"4px"}}><img src="https://i.postimg.cc/sg4kVCyD/blue.jpg" alt="a1" style={{height:"60px",width:"auto"}}/></li>
+              <li style={{margin:"4px"}}><img src="https://i.postimg.cc/sg4kVCyD/blue.jpg" alt="a1" style={{height:"60px",width:"auto"}}/></li>
+              <li style={{margin:"4px"}}><img src="https://i.postimg.cc/sg4kVCyD/blue.jpg" alt="a1" style={{height:"60px",width:"auto"}}/></li>
+            
+
+          
+             
+            
+             
+             
+             
+              </ul>
+              </div>
               <div >
               <a href={product.link} target="_blank">
                 <button className="submitReview">Add to Cart</button></a>
@@ -184,42 +204,37 @@ const ProductDetails = ({ match }) => {
                   </b><br /><br />
                   Sold by <span style={{ color: "dodgerblue" }}>Sindh Boot House</span>.
                 </p>
+
+                
+                <div className="detailsBlock-3-1-1">
+                <button onClick={decreaseQuantity}>-</button>
+                <input readOnly type="number" value={quantity} />
+                <button onClick={increaseQuantity}>+</button>
+              </div>                <br />
+
               </div>
 
               <div className="detailsBlock-4">
 
-                <p style={{ fontSize: "14px" }}> <span style={{ fontFamily: "Arial", fontWeight: "bold", color: "black", paddingRight: "4.7em" }}>Brand </span> <span style={{ color: "black" }}>{product.brand}</span></p>
+                <p style={{ fontSize: "14px" }}> <span style={{ fontFamily: "Arial", fontWeight: "bold", color: "black", paddingRight: "1.7em" }}>Brand </span> <span style={{ color: "black" }}>{product.brand}</span></p>
+                <br />
+                <p style={{ fontSize: "14px" }}> <span style={{ fontFamily: "Arial", fontWeight: "bold", color: "black", paddingRight: "1.7em" }}>Inner Material </span> <span style={{ color: "black" }}>{product.material}</span></p>
+                <br />
+                <p style={{ fontSize: "14px" }}> <span style={{ fontFamily: "Arial", fontWeight: "bold", color: "black", paddingRight: "1.7em" }}>Outer Material </span> <span style={{ color: "black" }}>{product.weight}</span></p>
+                <br />
+                <p style={{ fontSize: "14px" }}> <span style={{ fontFamily: "Arial", fontWeight: "bold", color: "black", paddingRight: "1.7em" }}>Ocassion </span> <span style={{ color: "black" }}>{product.point1}</span></p>
                 <br />
 
-                <p style={{ fontSize: "14px" }}> <span style={{ fontFamily: "Arial", fontWeight: "bold", color: "black", paddingRight: "4.5em" }}>Colour</span> <span style={{ color: "black" }}>{product.colour}</span></p>
-                <br />
-
-                <p style={{ fontSize: "14px" }}> <span style={{ fontFamily: "Arial", fontWeight: "bold", color: "black", paddingRight: "1.2em" }}> Inner Material</span> <span style={{ color: "black" }}>{product.material}</span></p>
-                <br />
-
-                <p style={{ fontSize: "14px" }}> <span style={{ fontFamily: "Arial", fontWeight: "bold", color: "black", paddingRight: "1.2em" }}>Outer Material</span> <span style={{ color: "black" }}>{product.itemdimensions}</span></p>
-                <br />
-
-                <p style={{ fontSize: "14px" }}> <span style={{ fontFamily: "Arial", fontWeight: "bold", color: "black", paddingRight: "4em" }}>Ideal For</span> <span style={{ color: "black" }}>{product.weight}</span></p>
-
-                <p style={{ fontSize: "14px" }}> <span style={{ fontFamily: "Arial", fontWeight: "bold", color: "black", paddingRight: "3.7em" }}>Occasion</span> <span style={{ color: "black" }}>{product.weight}</span></p>
-
-                <p style={{ fontSize: "14px" }}> <span style={{ fontFamily: "Arial", fontWeight: "bold", color: "black", paddingRight: "2em" }}>Sole Material</span> <span style={{ color: "black" }}>{product.weight}</span></p>
-
-                <p style={{ fontSize: "14px" }}> <span style={{ fontFamily: "Arial", fontWeight: "bold", color: "black", paddingRight: "4.5em" }}>Closure</span> <span style={{ color: "black" }}>{product.weight}</span></p>
-
-                <p style={{ fontSize: "14px" }}> <span style={{ fontFamily: "Arial", fontWeight: "bold", color: "black", paddingRight: "1.3em" }}>Sales Package</span> <span style={{ color: "black" }}>{product.weight}</span></p>
-                <hr />
-
-
-
+                
 
                 <div>
-                <div className="color-option">
+
                 
+                <div className="color-option">
+                <h3 className="title">colour</h3>
                 <div className="circles">
-                <span className="color">Colour:</span>
-                  <span className={`circle blue ${selectedColor === "blue" && "active"}`} id="blue" onClick={() => setselectedColor("blue")}></span>
+               
+                 <span className={`circle blue ${selectedColor === "blue" && "active"}`} id="blue" onClick={() => setselectedColor("blue")}></span>
                   <span className={`circle pink ${selectedColor === "pink" && "active"}`} id="pink" onClick={() => setselectedColor("pink")}></span>
                   <span className={`circle yellow ${selectedColor === "yellow" && "active"}`} id="yellow" onClick={() => setselectedColor("yellow")}></span>
                 </div>
@@ -227,7 +242,7 @@ const ProductDetails = ({ match }) => {
                
       
       
-      
+      <br/>
                
       
       
@@ -236,24 +251,29 @@ const ProductDetails = ({ match }) => {
               
                   
                 </div>
-                <div>
-                <span className="color">Size:</span>
-                  <Select name="size" onChange={handleFilters}>
-                  <Option disabled>Size</Option>
-                  <Option>XS</Option>
-                  <Option>S</Option>
-                  <Option>M</Option>
-                  <Option>L</Option>
-                  <Option>XL</Option>
-                </Select>
-                  
+                <div className="size-container">
+                <h3 className="title">size</h3>
+                <div className="sizes">
+                    <span id="a"  className={`size ${size === "a" && "active"}`} onClick={()=> setSize("a")} >7</span>
+                    <span id="b"  className={`size ${size === "b" && "active"}`} onClick={()=> setSize("b")}>8</span>
+                    <span id="c"  className={`size ${size === "c" && "active"}`} onClick={()=> setSize("c")}>9</span>
+                    <span id="d"  className={`size ${size === "d" && "active"}`} onClick={()=> setSize("d")}>10</span>
+                    <span id="e"  className={`size ${size === "e" && "active"}`} onClick={()=> setSize("e")}>11</span>
                 </div>
+            </div>
                 <div >
-                <a href={product.link} target="_blank">
-                  <button className="buttons1">Add to Cart</button></a>
 
-                <a href={product.link} target="_blank">
-                  <button className="buttons1">BUY NOW</button></a>
+
+
+                <button
+                disabled={product.Stock < 1 ? true : false}
+                onClick={addToCartHandler}
+                className="buttons1"
+              >
+                Add to Cart
+              </button>
+                  <Link  style={{textDecoration: 'none' }} to={`/cart`}>
+                  <button className="buttons1">BUY NOW</button></Link>
                   </div>
               </div>
             </div>

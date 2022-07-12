@@ -1,12 +1,12 @@
 .newProductContainer {
   width: 100%;
   box-sizing: border-box;
-  background-color: rgb(221, 221, 221);
+  background-color:#fff;
   border-left: 1px solid rgba(0, 0, 0, 0.158);
   display: flex;
   flex-direction: column;
   height: 250vh;
-  margin-top: 5rem;
+  margin-top: -33rem;
 }
 .newProductContainer h1 {
   color: rgba(0, 0, 0, 0.733);

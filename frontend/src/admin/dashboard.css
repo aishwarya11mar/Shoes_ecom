@@ -1,16 +1,4 @@
-.dashboard {
-  width: 100vw;
-  max-width: 100%;
-  display: grid;
-  grid-template-columns: 1fr 5fr;
-  position: relative;
-}
 
-.dashboardContainer {
-  border-left: 1px solid rgba(0, 0, 0, 0.13);
-  background-color: rgb(255, 255, 255);
-  padding: 3rem 0;
-}
 
 .dashboardContainer > h1 {
   color: rgba(0, 0, 0, 0.733);
@@ -18,7 +6,8 @@
   text-align: center;
   width: 50%;
   padding: 1.5rem;
-  margin: auto;
+  margin-top: -29rem;
+  margin-left: 25%;
 }
 
 .dashboardSummary {
@@ -37,7 +26,7 @@
   text-align: center;
   padding: 1.5rem;
   width: 100%;
-  margin: 0 2rem;
+  margin: 0 6rem;
 }
 .dashboardSummaryBox2 > a {
   color: rgb(0, 0, 0);
@@ -95,3 +84,5 @@
     font: 300 0.9rem "Roboto";
   }
 }
+
+ 

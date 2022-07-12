@@ -142,15 +142,7 @@ const NewProduct = ({ history }) => {
                 onChange={(e) => setPrice(e.target.value)}
               />
             </div>
-             <div>
-              <AttachMoneyIcon />
-              <input
-                type="string"
-                placeholder="link"
-                required
-                onChange={(e) => setamazon_link(e.target.value)}
-              />
-            </div> 
+          
 
             <div>
               <DescriptionIcon />
@@ -178,7 +170,7 @@ const NewProduct = ({ history }) => {
               <DescriptionIcon />
 
               <textarea
-                placeholder="Material"
+                placeholder="Inner Material"
                 value={material}
                 onChange={(e) => setmaterial(e.target.value)}
                 cols="30"
@@ -189,7 +181,7 @@ const NewProduct = ({ history }) => {
               <DescriptionIcon />
 
               <textarea
-                placeholder="Weight"
+                placeholder="Outer Material"
                 value={weight}
                 onChange={(e) => setweight(e.target.value)}
                 cols="30"
@@ -200,19 +192,8 @@ const NewProduct = ({ history }) => {
               <DescriptionIcon />
 
               <textarea
-                placeholder="Item Dimensions"
+                placeholder="Ocassion"
                 value={itemdimensions}
-                onChange={(e) => setitemdimensions(e.target.value)}
-                cols="30"
-                rows="1"
-              ></textarea>
-            </div>
-            <div>
-              <DescriptionIcon />
-
-              <textarea
-                placeholder="Point 1"
-                value={point1}
                 onChange={(e) => setpoint1(e.target.value)}
                 cols="30"
                 rows="1"
@@ -222,46 +203,14 @@ const NewProduct = ({ history }) => {
               <DescriptionIcon />
 
               <textarea
-                placeholder="Point 2"
-                value={point2}
-                onChange={(e) => setpoint2(e.target.value)}
+                placeholder="Closure"
+                value={itemdimensions}
+                onChange={(e) => setitemdimensions(e.target.value)}
                 cols="30"
                 rows="1"
               ></textarea>
             </div>
-            <div>
-              <DescriptionIcon />
-
-              <textarea
-                placeholder="Point 3"
-                value={point3}
-                onChange={(e) => setpoint3(e.target.value)}
-                cols="30"
-                rows="1"
-              ></textarea>
-            </div>
-            <div>
-              <DescriptionIcon />
-
-              <textarea
-                placeholder="Point 4"
-                value={point4}
-                onChange={(e) => setpoint4(e.target.value)}
-                cols="30"
-                rows="1"
-              ></textarea>
-            </div>
-            <div>
-              <DescriptionIcon />
-
-              <textarea
-                placeholder="Point 5"
-                value={point5}
-                onChange={(e) => setpoint5(e.target.value)}
-                cols="30"
-                rows="1"
-              ></textarea>
-            </div>
+          
             <div>
               <DescriptionIcon />
 

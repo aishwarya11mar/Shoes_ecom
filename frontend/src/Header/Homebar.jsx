@@ -20,6 +20,7 @@ import { Link} from "react-router-dom";
 const HomeBar = ({ history }) => {
 
     const [modalOpen, setModalOpen] = useState(false);
+    const [searchOpen,setsearchOpen]=useState(false);
 
 /* 
         // search-box open close js code
@@ -141,10 +142,10 @@ const HomeBar = ({ history }) => {
                    
                    <div className="search-box"> <Link  to='/login' ><i className='bx bx-user a ' ></i></Link></div>
 
-                    <div className="search-box">
+                    <div className="search-box" onClick={()=>setsearchOpen(true)}>
                         
                         <i className='bx bx-search'></i>
-                        <div className="input-box">
+                        <div className={`${searchOpen === false && 'input-box'}`}>
                             <input type="text" placeholder="Search..."  onChange={(e) => setKeyword(e.target.value)}/>
                         </div>
                     </div>

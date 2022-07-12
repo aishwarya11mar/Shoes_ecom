@@ -248,7 +248,7 @@ p {
 
 }
 
-.headline h2::before {
+/* .headline h2::before {
     content: '';
     width: 30%;
     height: 0.125rem;
@@ -258,7 +258,7 @@ p {
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 0.625rem;
-}
+} */
 
 .products a {
     text-decoration: none;

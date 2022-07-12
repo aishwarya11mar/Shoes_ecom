@@ -8,7 +8,7 @@ import Home from "../Home/Home";
 
 const Products = () => {
 
-  const [mark, setmark] = useState("Casual");
+  const [mark, setmark] = useState("");
   return (
 
     <Fragment>

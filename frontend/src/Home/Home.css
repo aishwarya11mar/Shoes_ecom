@@ -131,13 +131,13 @@
 
 .product-card .main-images img {
   position: absolute;
-  height: 300px;
-  width: 300px;
+  height: 200px;
+  width: 260px;
   object-fit: cover;
-  transform: rotate(18deg);
-  left: 12px;
-  top: -40px;
-  z-index: -1;
+ /*  transform: rotate(18deg); */
+/*   left: 12px;
+ *//*   top: -40px;
+ */  z-index: -1;
   opacity: 0;
   transition: opacity 0.5s ease;
 }

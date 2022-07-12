@@ -1,21 +1,26 @@
 .productListContainer {
-  width: 100%;
-  box-sizing: border-box;
+/*   width: 100%;
+ */  box-sizing: border-box;
   background-color: rgb(255, 255, 255);
   border-left: 1px solid rgba(0, 0, 0, 0.158);
   display: flex;
   flex-direction: column;
   height: 100vh;
-/*   position: absolute;
- */}
+  width: 90%;
+  margin-left: 7rem;
+  margin-top: -30rem;
+
+ 
+ 
+}
 
 #productListHeading {
   font: 400 2rem "Roboto";
-  padding: 0.5vmax;
+  padding: 2vmax;
   box-sizing: border-box;
   color: rgba(0, 0, 0, 0.637);
   transition: all 0.5s;
-  margin: 2rem;
+  margin: 1rem;
   text-align: center;
 }
 

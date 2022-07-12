@@ -57,7 +57,7 @@ const ProductList = ({ history }) => {
     {
       field: "name",
       headerName: "Name",
-      minWidth: 350,
+      minWidth: 100,
       flex: 1,
     },
     {
@@ -72,7 +72,7 @@ const ProductList = ({ history }) => {
       field: "price",
       headerName: "Price",
       type: "number",
-      minWidth: 270,
+      minWidth: 50,
       flex: 0.5,
     },
 

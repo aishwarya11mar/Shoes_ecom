@@ -68,20 +68,20 @@
 
 .detailsBlock-3-1-1 > button {
   border: none;
-  background-color: rgba(0, 0, 0, 0.616);
+  background-image: linear-gradient(120deg, #9708CC, #43CBFF, #9708CC, #43CBFF);
   padding: 0.5vmax;
   cursor: pointer;
   color: white;
   transition: all 0.5s;
 }
 .detailsBlock-3-1-1 > button:hover {
-  background-color: rgba(0, 0, 0, 0.767);
+  background-image: linear-gradient(120deg, #9708CC, #43CBFF, #9708CC, #43CBFF);
 }
 
 .detailsBlock-3-1-1 > input {
   border: none;
   padding: 0.5vmax;
-  width: 1vmax;
+  width: 3vmax;
   text-align: center;
   outline: none;
   font: 400 0.8vmax "Roboto";
@@ -362,4 +362,44 @@
   outline: none;
   padding: 1rem;
   font: 300 1rem "Roboto";
+}
+
+.size-container{
+  padding: 10px 0;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #dadada;
+
+}
+
+.title{
+  color: #3a3a3a;
+  font-weight: 600;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+}
+
+.sizes{
+  padding: 8px 0;
+  display: flex;
+  align-items: center;
+}
+
+.size{
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  background-color: #eee;
+  margin: 0 10px;
+  text-align: center;
+  line-height: 40px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.size.active{
+  background-color: rgb(86, 86, 248);
+  color: white;
+  transition: .5s;
 }

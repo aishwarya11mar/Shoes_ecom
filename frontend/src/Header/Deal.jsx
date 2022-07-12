@@ -75,7 +75,7 @@ const Deal = ({timer,title}) => {
 
     return (
         <Box className={classes.component} style={{position:"static"}}>
-            <Box className={classes.deal} style={{position:"static"}}>>
+            <Box className={classes.deal} style={{position:"static"}}>
                 <Typography className={classes.dealText}>{title}</Typography>
                 {
                     timer && <Box className={classes.timer}>
@@ -104,7 +104,7 @@ const Deal = ({timer,title}) => {
             >
                 {
                     products.map(product => (
-                        <Box textAlign="center" className={classes.wrapper} style={{position:"static"}}>>
+                        <Box textAlign="center" className={classes.wrapper} style={{position:"static"}}>
                             <img src={product.url} className={classes.image} />
                             <Typography className={classes.text} style={{ fontWeight: 600, color: '#212121',position:"static" }}>{product.title.shortTitle}</Typography>
                             <Typography className={classes.text} style={{ color: 'green' ,position:"static"}}>{product.discount}</Typography>

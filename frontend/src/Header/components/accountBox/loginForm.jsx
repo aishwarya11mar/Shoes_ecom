@@ -81,17 +81,17 @@ export function LoginForm(props,{match,history}) {
 
   //const redirect = location.search ? location.search.split("=")[1] : "/account";
 
-  useEffect(() => {
+/*   useEffect(() => {
     if (error) {
       alert.error(error);
       dispatch(clearErrors());
     }
 
     if (isAuthenticated) {
-      history.push("/account");
+      history.push("/products");
     }
   }, [dispatch, error, alert, history, isAuthenticated]);
-
+ */
   return (
     <Fragment>
     {loading ? (

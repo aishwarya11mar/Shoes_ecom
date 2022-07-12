@@ -168,7 +168,6 @@ nav .navbar .links li:hover .js-sub-menu {
     border-radius: 6px;
     opacity: 0;
     pointer-events: none;
-    transition: all 0.4s ease;
 }
 
 .navbar.showInput .search-box .input-box {
@@ -177,7 +176,7 @@ nav .navbar .links li:hover .js-sub-menu {
     pointer-events: auto;
     background: #9eb4ff;
 }
-
+/* 
 .search-box .input-box::before {
     content: '';
     position: absolute;
@@ -188,8 +187,8 @@ nav .navbar .links li:hover .js-sub-menu {
     top: -6px;
     transform: rotate(45deg);
 }
-
-.search-box .input-box input {
+ */
+.search-box .input-box s {
     position: absolute;
     top: 50%;
     left: 50%;

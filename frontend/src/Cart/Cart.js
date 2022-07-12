@@ -10,6 +10,9 @@ import { Link } from "react-router-dom";
 const Cart = ({ history }) => {
   const dispatch = useDispatch();
   const { cartItems } = useSelector((state) => state.cart);
+  const { error, loading, isAuthenticated } = useSelector(
+    (state) => state.user
+  );
 
   const increaseQuantity = (id, quantity, stock) => {
     const newQty = quantity + 1;
@@ -32,7 +35,9 @@ const Cart = ({ history }) => {
   };
 
   const checkoutHandler = () => {
-    history.push("/login?redirect=shipping");
+    if (isAuthenticated) {
+      history.push("/shipping");
+    }
   };
 
   return (

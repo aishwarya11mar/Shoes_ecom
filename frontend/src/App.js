@@ -3,7 +3,7 @@ import MidBar from './Header/Midbar.jsx';
 import LoginSignUp from './Header/LoginSignUp.jsx';
 import Contact from './Footer/Contact.jsx';
 import Subscribe from './Footer/Subscribe.jsx';
-import Review from './Footer/Review.jsx';
+import Footer from './Footer/Contact.jsx';
 import Faq from './Footer/Faq.jsx';
 import TermsAndCondition from './Footer/TermsAndCondition.jsx';
 import Privacy from './Footer/Privacy.jsx';
@@ -50,12 +50,33 @@ import OrderDetails from "./Order/OrderDetails";
 import OrderList from "./admin/OrderList";
 import ProcessOrder from "./admin/ProcessOrder";
 import ProductReviews from "./admin/ProductReviews";
-
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
 
 function App({product}) {
 
    const { isAuthenticated, user } = useSelector((state) => state.user);  
 
+   const [stripeApiKey, setStripeApiKey] = useState("");
+
+   async function getStripeApiKey() {
+     const { data } = await axios.get("/api/v1/stripeapikey");
+ 
+     setStripeApiKey(data.stripeApiKey);
+   }
+ 
+   useEffect(() => {
+     WebFont.load({
+       google: {
+         families: ["Roboto", "Droid Sans", "Chilanka"],
+       },
+     });
+ 
+     store.dispatch(loadUser());
+ 
+     getStripeApiKey();
+   }, []);
+ 
 
 
 useEffect(() => {
@@ -79,10 +100,19 @@ useEffect(() => {
 
   return (
     <Router>
-      <HomeBar /> 
-       {isAuthenticated && <UserOptions user={user} />  }
+    <HomeBar/>
       
+       {isAuthenticated && <UserOptions user={user} />  }
+       {stripeApiKey && (
+        <Elements stripe={loadStripe(stripeApiKey)}>
+          <ProtectedRoute exact path="/process/payment" component={Payment} />
+        </Elements>
+      )}
+   
  <Switch>
+
+   
+      
  <Route exact path="/" component={MidBar} />
  <Route exact path="/product/:id" component={ProductDetails} />
  <Route exact path="/products" component={Products} />
@@ -195,11 +225,13 @@ useEffect(() => {
  component={ProductReviews}
 />
 
+
+
+
       </Switch>
 
 
-      <Review/>
-     
+      <Footer/>
         
     </Router>
   );

@@ -84,7 +84,7 @@ export function SignupForm(props,{history, location, match}) {
   
 
 
-
+/* 
   useEffect(() => {
     if (error) {
       alert.error(error);
@@ -95,7 +95,7 @@ export function SignupForm(props,{history, location, match}) {
       history.push("/account");
     }
   }, [dispatch, error, alert, history, isAuthenticated]);
-
+ */
   return (
     <Fragment>
     {loading ? (
